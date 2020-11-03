@@ -34,6 +34,11 @@ func home(w http.ResponseWriter, r *http.Request) {
 		result.Status = "invalid coupon"
 	}
 
+	// caso cupom ganhador
+	if resultCoupon.Status == "winner" && result.Status == "approved"{
+		result.Status = "WINNER COUPON!"
+	}
+
 	jsonData, err := json.Marshal(result)
 	if err != nil {
 		log.Fatal("Error processing json")

@@ -26,7 +26,6 @@ func home(w http.ResponseWriter, r *http.Request) {
 }
 
 func process(w http.ResponseWriter, r *http.Request) {
-
 	result := makeHttpCall("http://localhost:9091", r.FormValue("coupon"), r.FormValue("cc-number"))
 
 	t := template.Must(template.ParseFiles("templates/home.html"))
@@ -56,9 +55,7 @@ func makeHttpCall(urlMicroservice string, coupon string, ccNumber string) Result
 	}
 
 	result := Result{}
-
 	json.Unmarshal(data, &result)
 
 	return result
-
 }
